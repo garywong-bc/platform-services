@@ -1,0 +1,10 @@
+apiVersion: v1
+stringData:
+  metadata.name: template.jenkins-hubot-github
+  password: xxxxxxxxxxxxx
+  username: caggles
+kind: Secret
+metadata:
+  name: template.jenkins-hubot-github
+  namespace: e5imao-tools
+type: Opaque

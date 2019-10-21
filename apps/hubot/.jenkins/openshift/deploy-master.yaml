@@ -2,7 +2,7 @@ apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
   creationTimestamp: null
-  name: jenkins
+  name: jenkins-hubot
 objects:
 - apiVersion: v1
   kind: ImageStream
@@ -123,7 +123,7 @@ objects:
             initialDelaySeconds: 420
             periodSeconds: 360
             timeoutSeconds: 240
-          name: jenkins
+          name: jenkins-hubot
           ports:
           - containerPort: 50000
             protocol: TCP
@@ -199,7 +199,7 @@ objects:
     - imageChangeParams:
         automatic: true
         containerNames:
-        - jenkins
+        - jenkins-hubot
         from:
           kind: ImageStreamTag
           name: ${NAME}:${VERSION}

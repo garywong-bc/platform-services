@@ -23,7 +23,7 @@ parameters:
   displayName: Name
   name: NAME
   required: true
-  value: jenkins
+  value: jenkins-hubot
 - name: GH_USERNAME
   required: true
 - description: GitHub Personal Access Token

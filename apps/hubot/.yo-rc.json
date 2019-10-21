@@ -3,9 +3,9 @@
     "promptValues": {
       "modules": {
         "jenkins": {
-          "path": ".jenkins",
+          "path": ".jenkins-hubot",
           "namespace": "e5imao-tools",
-          "name": "jenkins",
+          "name": "jenkins-hubot",
           "version": "1.0.0",
           "environments": {
             "build": {
@@ -21,7 +21,7 @@
           "jenkinsJobName": "_jenkins",
           "github_owner": "BCDevOps",
           "github_repo": "platform-services",
-          "jenkinsFilePath": ".jenkins/Jenkinsfile",
+          "jenkinsFilePath": "apps/hubot/.jenkins/Jenkinsfile",
           "uuid": "106b2823-fa4c-4818-8021-7d437bb02a6b"
         },
         ".": {
@@ -45,7 +45,7 @@
           "jenkinsJobName": "hubot",
           "github_owner": "BCDevOps",
           "github_repo": "platform-services",
-          "jenkinsFilePath": "Jenkinsfile",
+          "jenkinsFilePath": "apps/hubot/Jenkinsfile",
           "uuid": "ad4b1b10-5020-4a25-9ca9-77923f6d7022"
         }
       }

@@ -1,0 +1,8 @@
+apiVersion: v1
+stringData:
+  username: jenkins-hubot-slave
+kind: Secret
+metadata:
+  name: template.jenkins-hubot-slave-user
+  namespace: e5imao-tools
+type: Opaque

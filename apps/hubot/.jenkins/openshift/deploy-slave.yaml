@@ -2,7 +2,7 @@ apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
   creationTimestamp: null
-  name: jenkins
+  name: jenkins-hubot
 objects:
 - apiVersion: v1
   kind: DeploymentConfig
@@ -57,7 +57,7 @@ objects:
             value: ${ENV_ID}
           image: ' '
           imagePullPolicy: Always
-          name: jenkins
+          name: jenkins-hubot
           ports:
           - containerPort: 50000
             protocol: TCP
@@ -75,8 +75,8 @@ objects:
           volumeMounts:
           - mountPath: /var/run/pod
             name: pod-metadata
-          - mountPath: /run/secrets/jenkins-slave-user
-            name: jenkins-slave-user
+          - mountPath: /run/secrets/jenkins-hubot-slave-user
+            name: jenkins-hubot-slave-user
             readOnly: true
           - mountPath: /run/secrets/github
             name: github
@@ -89,7 +89,7 @@ objects:
         serviceAccountName: ${NAME}${SUFFIX}
         terminationGracePeriodSeconds: 30
         volumes:
-        - name: jenkins-home
+        - name: jenkins-hubot-home
           persistentVolumeClaim:
             claimName: ${NAME}${SUFFIX}
         - downwardAPI:
@@ -111,7 +111,7 @@ objects:
               name: annotations
               path: annotations
           name: pod-metadata
-        - name: jenkins-slave-user
+        - name: jenkins-hubot-slave-user
           secret:
             defaultMode: 420
             secretName: ${NAME}${SUFFIX}-slave-user
@@ -124,7 +124,7 @@ objects:
     - imageChangeParams:
         automatic: true
         containerNames:
-          - jenkins
+          - jenkins-hubot
           - init
         from:
           kind: ImageStreamTag
