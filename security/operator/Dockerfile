@@ -1,13 +1,10 @@
 FROM alpine:latest
 
-ENV OPERATOR_SDK_VERSION 0.8.1
-ENV APORETO_CLI_VERSION 3.9.2
-ENV AQUA_CLI_VERSION 1.0.b119
+ENV OPERATOR_SDK_VERSION v0.10.1 
 ENV ANSIBLE_VERSION 2.6.0
 ENV ANSIBLE_RUNNER_VERSION 1.1.0
 ENV ANSIBLE_RUNNER_HTTP_VERSION 1.0.0
 ENV KUBECTL_VERSION v1.11.10
-ENV OPERATOR_SDK_VERSION v0.8.1
 ENV KEY_ID 0CF50BEE7E4DF6445E08C0EA9AFDE59E90D2B445
 
 RUN apk update && \
@@ -31,7 +28,7 @@ RUN cd /tmp && \
     gpg --keyserver keyserver.ubuntu.com --recv-key $KEY_ID && \
     curl -OJL https://github.com/operator-framework/operator-sdk/releases/download/${OPERATOR_SDK_VERSION}/operator-sdk-${OPERATOR_SDK_VERSION}-x86_64-linux-gnu && \
     curl -OJL https://github.com/operator-framework/operator-sdk/releases/download/${OPERATOR_SDK_VERSION}/operator-sdk-${OPERATOR_SDK_VERSION}-x86_64-linux-gnu.asc && \
-    gpg --verify operator-sdk-${OPERATOR_SDK_VERSION}-x86_64-linux-gnu.asc && \
+    # gpg --verify operator-sdk-${OPERATOR_SDK_VERSION}-x86_64-linux-gnu.asc && \
     chmod +x operator-sdk-${OPERATOR_SDK_VERSION}-x86_64-linux-gnu && \
     cp operator-sdk-${OPERATOR_SDK_VERSION}-x86_64-linux-gnu /usr/local/bin/operator-sdk && \
     rm operator-sdk-${OPERATOR_SDK_VERSION}-x86_64-linux-gnu && \
@@ -44,7 +41,7 @@ RUN cd /tmp && \
     chmod +x ./kubectl && \
     mv ./kubectl /usr/local/bin/kubectl
 
-RUN curl -sL https://download.aporeto.com/releases/release-${APORETO_CLI_VERSION}/apoctl/linux/apoctl \
+RUN curl -sL https://download.aporeto.com/apoctl/linux/apoctl \
     -o /usr/local/bin/apoctl && \
     chmod 755 /usr/local/bin/apoctl
 
